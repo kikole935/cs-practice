@@ -5,3 +5,6 @@ print(x)
 
 y = a - b
 print(y)
+
+z = a * b
+print(z)
