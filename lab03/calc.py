@@ -8,6 +8,3 @@ print(y)
 
 z = a * b
 print(z)
-
-t = a / b
-print(t)
