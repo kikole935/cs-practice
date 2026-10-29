@@ -35,3 +35,40 @@ def read_valid(lines: list[str]) -> list[dict]:
             pass
             
     return valid_records
+
+def average_by_city(records: list[dict]) -> dict:
+    totals = {}
+    counts = {}
+    
+    for rec in records:
+        city = rec["city"]
+        totals[city] = totals.get(city, 0.0) + rec["temp"]
+        counts[city] = counts.get(city, 0) + 1
+        
+   
+    averages = {}
+    for city in totals:
+        averages[city] = round(totals[city] / counts[city], 1)
+        
+    return averages
+
+def warmest_city(records: list[dict]) -> str:
+    averages = average_by_city(records)
+    
+    if not averages:
+        return ""
+        
+    best_city = ""
+    best_temp = float("-inf")
+    
+    for city, temp in averages.items():
+       
+        if temp > best_temp:
+            best_temp = temp
+            best_city = city
+        
+        elif temp == best_temp:
+            if best_city == "" or city < best_city:
+                best_city = city
+                
+    return best_city
