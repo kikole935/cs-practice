@@ -74,3 +74,25 @@ def parse_settings(lines: list[str]) -> dict:
             current_list_key = None
 
     return settings
+
+def merge_by_key(rows: list[dict], extra: dict, key: str = "id") -> list[dict]:
+    result: list[dict] = []
+
+    for row in rows:
+        lookup = row.get(key)
+        extra_info = None
+
+        if lookup in extra:
+            extra_info = extra[lookup]
+        elif lookup is not None and str(lookup) in extra:
+            extra_info = extra[str(lookup)]
+
+        if isinstance(extra_info, dict):
+            result.append({**extra_info, **row})
+        else:
+            result.append(dict(row))
+
+    return result
+
+def records_to_json(records: list[dict]) -> str:
+    return json.dumps(records, ensure_ascii=False, indent=2, sort_keys=True)
