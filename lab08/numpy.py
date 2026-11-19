@@ -44,3 +44,59 @@ central_2x2 = temperatures[:2, 1:3]
 print("Центральный фрагмент 2x2:\n", central_2x2)
 print("Форма центрального фрагмента:", central_2x2.shape)
 
+print("\n--- Задание 4 ---")
+matrix = np.arange(1, 26).reshape(5, 5)
+
+first_three_rows = matrix[:3]
+print("Первые три строки:\n", first_three_rows)
+print("shape:", first_three_rows.shape)
+
+last_two_rows = matrix[-2:]
+print("Последние две строки:\n", last_two_rows)
+print("shape:", last_two_rows.shape)
+
+first_two_cols = matrix[:, :2]
+print("Первые два столбца:\n", first_two_cols)
+print("shape:", first_two_cols.shape)
+
+middle_fragment = matrix[1:4, 2:5]
+print("Строки 1-3, столбцы 2-4:\n", middle_fragment)
+print("shape:", middle_fragment.shape)
+
+bottom_right_2x2 = matrix[-2:, -2:]
+print("Правый нижний угол 2x2:\n", bottom_right_2x2)
+print("shape:", bottom_right_2x2.shape)
+
+print("\n--- Задание 5 ---")
+vector = np.array([10, 20, 30, 40, 50])
+vector[1:4] = 0
+print("Пример vector:", vector)
+
+small_matrix = np.arange(1, 10).reshape(3, 3)
+small_matrix[0, :] = -1
+small_matrix[1:, 1:] = 9
+print("Пример small_matrix:\n", small_matrix)
+
+changed_hours = hours.copy()
+changed_hours[2:5] = 99
+changed_hours[::2] = -1
+
+print("changed_hours:", changed_hours)
+print("Исходный hours:", hours)
+
+changed_matrix = matrix.copy()
+changed_matrix[1, :] = 0
+changed_matrix[:, -1] = -1
+changed_matrix[1:4, 1:4] = 100
+
+print("changed_matrix:\n", changed_matrix)
+print("Исходная matrix:", matrix)
+
+print("\n--- Задание 6 ---")
+numbers = np.arange(12)
+table = numbers.reshape(3, 4)
+transposed = table.T
+
+print("Форма numbers:", numbers.shape)
+print("Форма table:", table.shape)
+print("Форма transposed:", transposed.shape)
